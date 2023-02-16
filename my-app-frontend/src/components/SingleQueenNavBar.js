@@ -7,8 +7,6 @@ function SingleQueenNavBar() {
             <NavLink to="/">Home</NavLink>
             <div className="navbar-divider"> </div>
             <NavLink to="/queens">View Queens</NavLink>
-            <div className="navbar-divider"> </div>
-            <NavLink to="/add-new-quote">Add New Quote</NavLink>
         </div>
     )
 }

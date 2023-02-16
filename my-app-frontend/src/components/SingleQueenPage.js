@@ -15,8 +15,6 @@ function SingleQueenPage() {
     getQueenContent();
   }, [])
 
-  // console.log(queenContent)
-
   function getQueenContent() {
     fetch(`http://localhost:9292/queens/${id}`)
       .then(res => res.json())

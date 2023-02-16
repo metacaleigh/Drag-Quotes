@@ -24,7 +24,16 @@ function RandomQuote({ quotesArr }) {
     }
 
     function handleClapClick() {
-        setClapCount(clapCount => clapCount + 1)
+
+        fetch(`http://localhost:9292/quotes/${randomQuote.id}`, {
+            method: 'PATCH',
+            headers: {
+                "Content-Type": 'application/json'
+            },
+            body: JSON.stringify(clapCount)
+        })
+            .then(response => response.json())
+            .then(setClapCount(clapCount => clapCount + 1))
     }
 
     console.log(randomQuote)

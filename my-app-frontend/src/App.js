@@ -6,12 +6,14 @@ import SingleQueenPage from './components/SingleQueenPage';
 import { Switch } from "react-router-dom";
 import AddNewQueenForm from './components/AddNewQueenForm';
 import AddNewQuoteForm from './components/AddNewQuoteForm';
+import EditQueenForm from './components/EditQueenForm';
 
 
 function App({ Route }) {
 
   const [queensArr, setQueensArr] = useState([])
   const [quotesArr, setQuotesArr] = useState([])
+  const [editQueen, setEditQueen] = useState({})
 
   useEffect(() => {
     fetch("http://localhost:9292/queens")
@@ -23,10 +25,13 @@ function App({ Route }) {
         .then(quotesArr => setQuotesArr(quotesArr))
       }, [])
 
+      console.log(queensArr)
+
   function onFormSubmit(newQueen) {
     const newQueenBody = {
       ...newQueen,
-      season: Number(newQueen.season)
+      season: Number(newQueen.season),
+      "user_added?": true
     }
     console.log(newQueenBody)
 
@@ -41,22 +46,44 @@ function App({ Route }) {
       .then(setQueensArr(...queensArr, newQueen))
   }
 
-  // function onQuoteFormSubmit(newQuote) {
-  //   const newQuoteBody = {
-  //     ...newQuote,
-  //     queen_id: Number(newQuote.queen_id)
-  //   }
+  function onQuoteFormSubmit(newQuote) {
+    const newQuoteBody = {
+      ...newQuote,
+      queen_id: Number(newQuote.queen_id),
+      claps: Number(newQuote.claps)
+    }
 
-  //   fetch("http://localhost:9292/quotes", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify(newQuoteBody)
-  //   })
-  //     .then(res => res.json())
-  //     .then(setQuotesArr(...quotesArr, newQuote))
-  // }
+    console.log(newQuoteBody)
+
+    fetch("http://localhost:9292/quotes", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newQuoteBody)
+    })
+      .then(res => res.json())
+      .then(setQuotesArr(...quotesArr, newQuote))
+  }
+
+  function onEditFormSubmit(editedQueen) {
+
+    const editedQueenBody = {
+      ...editedQueen,
+      season: Number(editedQueen.season),
+      "user_added?": true
+    }
+
+    fetch(`http://localhost:9292/queens/${editQueen.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(editedQueenBody)
+    })
+      .then(res => res.json())
+      .then(setQueensArr(...queensArr, editedQueen))
+  }
 
 
   return (
@@ -66,7 +93,7 @@ function App({ Route }) {
           <HomePage quotesArr={quotesArr}/>
         </Route>
         <Route exact path="/queens">
-          <QueensPage queensArr={queensArr}/>
+          <QueensPage queensArr={queensArr} setQueensArr={setQueensArr} setEditQueen={setEditQueen}/>
         </Route>
         <Route path="/queens/:id">
           <SingleQueenPage />
@@ -75,7 +102,10 @@ function App({ Route }) {
           <AddNewQueenForm onFormSubmit={onFormSubmit}/>
         </Route>
         <Route exact path="/add-new-quote">
-          <AddNewQuoteForm queensArr={queensArr}/>
+          <AddNewQuoteForm queensArr={queensArr} onQuoteFormSubmit={onQuoteFormSubmit}/>
+        </Route>
+        <Route exact path="/edit-queen/:id">
+          <EditQueenForm editQueen={editQueen} onEditFormSubmit={onEditFormSubmit}/>
         </Route>
       </Switch>
     </div>

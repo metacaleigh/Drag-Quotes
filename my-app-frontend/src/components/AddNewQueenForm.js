@@ -1,6 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import { useHistory } from "react-router-dom";
 
 function AddNewQueenForm({ onFormSubmit }) {
+
+let history = useHistory()
 
 const initialFormData = {
     qname: "",
@@ -34,6 +37,7 @@ function handleFormSubmit(e) {
     e.preventDefault()
     onFormSubmit(formData)
     setFormData(initialFormData)
+    history.push('/queens')
 }
 
 return(
@@ -58,9 +62,9 @@ return(
                 placeholder='Sun Sign'>
             </input>
             <div id="winner-flex-row">
-                <label id="winner-form-label">Winner?</label>
+                <label id="winner-form-label">Winner? (Check box if yes)</label>
                 <input
-                    // className="new-queen-form-input"
+                    id="queen-form-checkbox"
                     name="winner?"
                     onChange={handleFormChange}
                     checked={formData["winner?"]}
@@ -91,9 +95,9 @@ return(
                 type="text"
                 placeholder='Image URL'>
             </input>
-            <button type="submit">Submit</button>
+            <button className="queen-form-submit"type="submit">Submit</button>
         </form>
-    </div>
+        </div>
     </div>
 )
 }

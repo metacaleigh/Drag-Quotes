@@ -2,15 +2,23 @@ import React, { useState } from 'react';
 import QueensHeader from './QueensHeader';
 import QueensList from './QueensList';
 import QueensNavBar from './QueensNavBar';
-import AddNewQueenForm from './AddNewQueenForm';
 import SearchQueens from './SearchQueens';
 
-function QueensPage({ queensArr }) {
+function QueensPage({ queensArr, setQueensArr, setEditQueen }) {
     const [search, setSearch] = useState("")
 
     const filteredQueens = queensArr.filter((queen) => {
         return queen.name.toLowerCase().includes(search.toLowerCase())
     })
+
+    function handleDelete(id) {
+        const updatedQueensArr = filteredQueens.filter((queen) => queen.id !== id)
+
+        fetch(`http://localhost:9292/queens/${id}`, {
+            method: 'DELETE'
+        })
+        .then(setQueensArr(updatedQueensArr))
+    }
 
     return (
     <div className="QueensPage">
@@ -18,7 +26,7 @@ function QueensPage({ queensArr }) {
         <div className='queens-page-flex-column'>
             <QueensHeader />
             <SearchQueens search={search} setSearch={setSearch}/>
-            <QueensList queensArr={filteredQueens}/>
+            <QueensList queensArr={filteredQueens} handleDelete={handleDelete} setEditQueen={setEditQueen}/>
         </div>
     </div>
     );

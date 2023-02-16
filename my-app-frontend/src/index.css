@@ -22,6 +22,10 @@ body {
   background-color: #ff7fb0;
 }
 
+.HomePage {
+  cursor: url('flag-cursor.png'), auto;
+}
+
 .logo-image {
   display: flex;
   justify-content: center;
@@ -39,6 +43,7 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   gap: 4vw;
+  cursor: url('crown-cursor.png'), auto;
 }
 
 .outer-card-div {
@@ -61,7 +66,7 @@ body {
 .queen-images {
   align-items: center;
   align-self: center;
-  height: 41vh;
+  height: 42vh;
   width: 14vw;
   object-fit: cover;
 }
@@ -119,10 +124,11 @@ body {
   border-top: none;
   border-left: none;
   border-radius: 50px;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Bebas Neue', cursive;
   background-color: #ff00ce;
   font-size: 25px;
   color: #ffd93b;
+  cursor: pointer;
 }
 
 .quote-container {
@@ -135,28 +141,30 @@ body {
   position: absolute;
   top: 3vh;
   left: 4vw;
-  font-size: 4vh;
+  font-size: 5vh;
   font-family: 'Shrikhand', cursive;
   color: #ffd93b;
 }
 
 #quote-text {
   position: absolute;
-  top: 31%;
+  top: 43%;
   left: 50%;
   width: 50vw;
   transform: translate(-50%, -50%);
   font-family: 'Bebas Neue', cursive;
-  font-size: 3vh;
+  font-size: 5vh;
   text-align: center;
 }
 
 #clap-button-div {
   position: absolute;
-  top: 45%;
+  top: 65%;
   left: 43%;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Big Shoulders Display', cursive;
   color: black;
+  font-size: 3vh;
+  cursor: pointer;
 }
 
 #text-bubble-image {
@@ -173,6 +181,7 @@ body {
   right:0px;
   bottom:0px;
   left:0px;
+  cursor: url('crown-cursor.png'), auto;
 }
 
 .NavBar {
@@ -184,7 +193,7 @@ body {
 .new-queen-form-page {
   height: 100%;
   width: 100vw;
-  background-image: url('../public/images/GlitterBG.png');
+  background-image: url('leopardBG.png');
   overflow-x: hidden;
   position:absolute;
   top:0px;
@@ -196,18 +205,26 @@ body {
 .new-queen-form-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  background-color: #cb6ce6;
+  background-color: #ffd93b;
   border-radius: 25px;
   padding: 3vh;
   gap: 3vh;
   width: 30vw;
-  height: 45vh;
+  height: 55vh;
+  margin-top: 18vh;
+  margin-left: 33vw;
+  /* justify-self: center; */
+  /* align-self: center; */
+  /* justify-items: center; */
+  justify-content: center;
+  align-items: center;
+  /* align-content: center; */
 }
 
 #new-queen-form-header {
-  color: #10b9bb;
+  color: #cb6ce6;
   font-family: 'Bebas Neue', cursive;
+  font-size: 4vh;
   text-align: center;
 }
 
@@ -219,26 +236,41 @@ body {
   padding: 10px;
   margin: 10px;
   border-radius: 25px;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Big Shoulders Display', cursive;
+  font-size: 3vh;
   border-color: white;
   width: 20vw;
 }
 
-/* .single-queen-page {
+#queen-form-checkbox {
+  width: 5vw;
+  height: 3vh;
+}
+
+.queen-form-submit {
+  border: none;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 25px;
+  font-family: 'Bebas Neue', sans-serif;
+  width: 7vw;
+  font-size: 3vh;
   background-color: #cb6ce6;
-  height: 100vh;
-  width: 100vw;
-  top:0px;
-  right:0px;
-  bottom:0px;
-  left:0px;
-  overflow-x: hidden;
-} */
+  color: black;
+  margin-left: 8vw;
+}
+
+#winner-form-label {
+  font-family: 'Big Shoulders Display', cursive;
+  font-size: 3vh;
+  margin-left: 20px;
+}
 
 .single-queen-content-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  justify-items: center;
 }
 
 .single-queen-header {
@@ -246,46 +278,196 @@ body {
   justify-content: center;
   font-family: 'Big Shoulders Display', cursive;
   font-size: 6vh;
-  color:rgb(255, 21, 189)
+  color:rgb(255, 21, 189);
+  text-shadow:
+  0 0 7px rgb(255, 166, 243),
+  0 0 10px rgb(255, 166, 243),
+  0 0 21px rgb(255, 166, 243),
+  0 0 42px rgb(255, 0, 230),
+  0 0 82px rgb(255, 0, 230),
+  0 0 92px rgb(255, 0, 230);
 }
 
 .single-queen-content {
   display: flex;
   flex-direction: row;
-  gap: 8vw;
+  gap: 6vw;
   align-items: center;
   align-self: center;
+  margin-left:7vw;
 }
-
-/* .single-queen-images {
-  position: relative;
-  top: 0;
-  left: 0;
-} */
 
 #top-image {
-  height: 42vh;
+  height: 48vh;
   object-fit: cover;
-  /* position: absolute;
-  top: 30px;
-  left: 30px;
-  border: 1px solid #000000; */
 }
 
-/* #bottom-image {
-  position: relative;
-  top: 0;
-  left: 0;
-  border: 1px solid #000000;
-} */
-
 #queen-details {
-  padding-left: 10vw;
-  padding-right: 10vw;
+  padding-left: 7vw;
+  padding-right: 7vw;
   border-radius: 25px;
-  background-color: #10b9bb;
+  background-color: #cb6ce6;
   text-align: center;
   font-family: 'Bebas Neue', sans-serif;
   font-size: 3vh;
+  height: 45vh;
 }
 
+.single-queen-page {
+  height: 100%;
+  width: 100vw;
+  background-image: url('BlueBG.png');
+  overflow-x: hidden;
+  position:absolute;
+  top:0px;
+  right:0px;
+  bottom:0px;
+  left:0px;
+}
+
+#top-quote {
+  color: #10b9bb;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.new-quote-form-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-self: center;
+  background-color: #ffd93b;
+  border-radius: 25px;
+  padding: 3vh;
+  gap: 3vh;
+  width: 30vw;
+  height: 30vh;
+  margin-left: 33vw;
+  margin-top: 28vh;
+  padding-bottom: 6vh;
+}
+
+.new-quote-form-page {
+  height: 100%;
+  width: 100vw;
+  background-image: url('leopardBG.png');
+  overflow-x: hidden;
+  position:absolute;
+  top:0px;
+  right:0px;
+  bottom:0px;
+  left:0px;
+}
+
+#dropdown-label {
+  font-family: 'Bebas Neue', sans-serif;
+  color: #cb6ce6;
+  font-size: 4vh;
+}
+
+.new-quote-flex-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.new-quote-form-input {
+  border: none;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 25px;
+  font-family: 'Big Shoulders Display', cursive;
+  border-color: white;
+  width: 20vw;
+  font-size: 3vh;
+}
+
+#new-quote-form-button {
+  border: none;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 25px;
+  font-family: 'Bebas Neue', sans-serif;
+  width: 7vw;
+  font-size: 3vh;
+  background-color: #cb6ce6;
+  color: black;
+}
+
+.edit-queen-form-page {
+  height: 100%;
+  width: 100vw;
+  background-image: url('leopardBG.png');
+  overflow-x: hidden;
+  position:absolute;
+  top:0px;
+  right:0px;
+  bottom:0px;
+  left:0px;
+}
+
+.edit-queen-form-container {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffd93b;
+  border-radius: 25px;
+  padding: 3vh;
+  gap: 3vh;
+  width: 30vw;
+  height: 55vh;
+  margin-top: 18vh;
+  margin-left: 33vw;
+  /* justify-self: center; */
+  /* align-self: center; */
+  /* justify-items: center; */
+  justify-content: center;
+  align-items: center;
+  /* align-content: center; */
+}
+
+#edit-queen-form-header {
+  color: #cb6ce6;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 4vh;
+  text-align: center;
+}
+
+.edit-queen-form-input {
+  display: flex;
+  flex-direction: column;
+  gap: 3vh;
+  border: none;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 25px;
+  font-family: 'Big Shoulders Display', cursive;
+  font-size: 3vh;
+  border-color: white;
+  width: 20vw;
+}
+
+#edit-queen-form-checkbox {
+  width: 5vw;
+  height: 3vh;
+}
+
+.edit-queen-form-submit {
+  border: none;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 25px;
+  font-family: 'Bebas Neue', sans-serif;
+  width: 7vw;
+  font-size: 3vh;
+  background-color: #cb6ce6;
+  color: black;
+  margin-left: 8vw;
+}
+
+#edit-winner-form-label {
+  font-family: 'Big Shoulders Display', cursive;
+  font-size: 3vh;
+  margin-left: 20px;
+}

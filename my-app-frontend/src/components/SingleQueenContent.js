@@ -1,11 +1,15 @@
 import React from 'react';
-// import GoldStar from '../GoldStar.png';
 
 function SingleQueenContent({ queenContent }) {
 
     let queenName = queenContent.name.toUpperCase();
+    let queensQuotes = queenContent.quotes
+    console.log(queensQuotes)
+    let topQuote = queenContent.most_popular_quote
+    console.log(topQuote)
+    let user_added = queenContent["user_added?"]
+    console.log(user_added)
 
-    // if (!queenContent) return null
     return(
         <div className="single-queen-content-container">
             <div className="single-queen-header">
@@ -14,14 +18,20 @@ function SingleQueenContent({ queenContent }) {
             <div className='single-queen-content'>
                 <div className="single-queen-images">
                     <img src={queenContent.image_url} id="top-image"/>
-                    {/* <img src={GoldStar} id="bottom-image"/> */}
                 </div>
                 <div id="queen-details">
-                    <h4>Sun Sign: {queenContent.sun_sign}</h4>
-                    <h4>Hometown: {queenContent.hometown}</h4>
-                    <h4>Season: {queenContent.season}</h4>
-                    <h4>Winner?: {queenContent["winner?"] == true ? "Yes" : "No"}</h4>
-                    <h4>Most Popular Quote:</h4>
+                    <h4><span className="underline">Sun Sign: </span>{queenContent.sun_sign}</h4>
+                    <h4><span className="underline">Hometown: </span>{queenContent.hometown}</h4>
+                    <h4><span className="underline">Season: </span>{queenContent.season}</h4>
+                    <h4><span className="underline">Winner?: </span>{queenContent["winner?"] == true ? "Yes" : "No"}</h4>
+                    <h4><span className="underline">Most Popular Quote: </span>{topQuote == null ? "N/A" : <span id="top-quote">"{topQuote.quote}"</span>}</h4>
+                </div>
+                <div>
+                    <ul>
+                        {/* {queensQuotes.forEach((q) => {
+                            return <li key={quote.id}>{q.quote}</li>
+                        })} */}
+                    </ul>
                 </div>
             </div>
         </div>
