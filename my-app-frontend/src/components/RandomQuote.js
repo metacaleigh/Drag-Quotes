@@ -5,8 +5,6 @@ function RandomQuote({ quotesArr }) {
 
     const [randomQuote, setRandomQuote] = useState(null)
 
-    // let quoteClaps = randomQuote.claps
-
     const [clapCount, setClapCount] = useState(0)
     
     useEffect(() => {
@@ -16,7 +14,10 @@ function RandomQuote({ quotesArr }) {
     function generateRandomQuote() {
         fetch("http://localhost:9292/quotes/get_random_quote")
             .then(res => res.json())
-            .then(randomQuote => setRandomQuote(randomQuote))
+            .then(randomQuote => {
+                setRandomQuote(randomQuote)
+                setClapCount(randomQuote.claps)
+            })
     }
     
     function handleButtonClick() {
@@ -25,15 +26,23 @@ function RandomQuote({ quotesArr }) {
 
     function handleClapClick() {
 
+        const newClapCount = {
+            claps: Number(randomQuote.claps + 1)
+        }
+
         fetch(`http://localhost:9292/quotes/${randomQuote.id}`, {
             method: 'PATCH',
             headers: {
                 "Content-Type": 'application/json'
             },
-            body: JSON.stringify(clapCount)
+            body: JSON.stringify(newClapCount)
         })
             .then(response => response.json())
-            .then(setClapCount(clapCount => clapCount + 1))
+            .then((data) => {
+                console.log(data)
+                setRandomQuote(data)
+                setClapCount(clapCount => clapCount + 1)
+            })
     }
 
     console.log(randomQuote)

@@ -13,7 +13,6 @@ function App({ Route }) {
 
   const [queensArr, setQueensArr] = useState([])
   const [quotesArr, setQuotesArr] = useState([])
-  const [editQueen, setEditQueen] = useState({})
 
   useEffect(() => {
     fetch("http://localhost:9292/queens")
@@ -43,7 +42,7 @@ function App({ Route }) {
       body: JSON.stringify(newQueenBody)
     })
       .then(res => res.json())
-      .then(setQueensArr(...queensArr, newQueen))
+      .then((data) => setQueensArr([...queensArr, data]))
   }
 
   function onQuoteFormSubmit(newQuote) {
@@ -63,7 +62,7 @@ function App({ Route }) {
       body: JSON.stringify(newQuoteBody)
     })
       .then(res => res.json())
-      .then(setQuotesArr(...quotesArr, newQuote))
+      .then(() => setQuotesArr([...quotesArr, newQuote]))
   }
 
   function onEditFormSubmit(editedQueen) {
@@ -74,7 +73,7 @@ function App({ Route }) {
       "user_added?": true
     }
 
-    fetch(`http://localhost:9292/queens/${editQueen.id}`, {
+    fetch(`/queens/${editedQueen.id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json"
@@ -82,7 +81,7 @@ function App({ Route }) {
       body: JSON.stringify(editedQueenBody)
     })
       .then(res => res.json())
-      .then(setQueensArr(...queensArr, editedQueen))
+      .then((data) => setQueensArr([...queensArr, data]))
   }
 
 
@@ -93,7 +92,7 @@ function App({ Route }) {
           <HomePage quotesArr={quotesArr}/>
         </Route>
         <Route exact path="/queens">
-          <QueensPage queensArr={queensArr} setQueensArr={setQueensArr} setEditQueen={setEditQueen}/>
+          <QueensPage queensArr={queensArr} setQueensArr={setQueensArr}/>
         </Route>
         <Route path="/queens/:id">
           <SingleQueenPage />
@@ -105,7 +104,7 @@ function App({ Route }) {
           <AddNewQuoteForm queensArr={queensArr} onQuoteFormSubmit={onQuoteFormSubmit}/>
         </Route>
         <Route exact path="/edit-queen/:id">
-          <EditQueenForm editQueen={editQueen} onEditFormSubmit={onEditFormSubmit}/>
+          <EditQueenForm onEditFormSubmit={onEditFormSubmit}/>
         </Route>
       </Switch>
     </div>

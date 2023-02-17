@@ -1,8 +1,29 @@
-import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useHistory, useParams } from 'react-router-dom';
 
-function EditQueenForm({ editQueen, onEditFormSubmit }) {
+function EditQueenForm({ onEditFormSubmit }) {
     let history = useHistory()
+
+    let {id} = useParams()
+
+    const [editQueen, setEditQueen] = useState({})
+
+    useEffect(() => {
+        fetch(`http://localhost:9292/queens/${id}`)
+            .then(res => res.json())
+            .then(queen => {
+                setEditQueen(queen)
+                setFormData({
+                    qname: queen.name,
+                    sun_sign: queen.sun_sign,
+                    "winner?": queen["winner?"],
+                    season: queen.season,
+                    hometown: queen.hometown,
+                    image_url: queen.image_url,
+                    "user_added?": true
+                })
+            })
+    }, [])
 
 const [formData, setFormData] = useState({
     qname: editQueen.name,
@@ -19,7 +40,7 @@ function handleEditFormChange(e) {
     console.log(name)
     let value;
     if (name == "winner?") {
-        value = true
+        value = e.target.checked
     } else {
         value = e.target.value
     }

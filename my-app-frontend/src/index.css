@@ -471,3 +471,13 @@ body {
   font-size: 3vh;
   margin-left: 20px;
 }
+
+.card-buttons {
+  border-radius: 50px;
+  border: none;
+  color: white;
+  background-color: black;
+  height: 20px;
+  display: inline flex;
+  flex-direction: row;
+}

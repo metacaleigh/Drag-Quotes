@@ -7,7 +7,10 @@ import SearchQueens from './SearchQueens';
 function QueensPage({ queensArr, setQueensArr, setEditQueen }) {
     const [search, setSearch] = useState("")
 
+    console.log(queensArr)
+
     const filteredQueens = queensArr.filter((queen) => {
+        console.log(queen)
         return queen.name.toLowerCase().includes(search.toLowerCase())
     })
 
