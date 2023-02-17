@@ -18,8 +18,8 @@ return(
                 <img className="queen-images" src={image_url} alt={name}/>
             </div>
         </NavLink>
-        {user_added == true ? <button className="card-buttons" onClick={() => handleDelete(id)}>✕</button> : null}
-        {user_added == true ? <NavLink to={`/edit-queen/${id}`}><button className="card-buttons">✎</button></NavLink> : null}
+        {user_added === true ? <button className="card-buttons" onClick={() => handleDelete(id)}>✕</button> : null}
+        {user_added === true ? <NavLink to={`/edit-queen/${id}`}><button className="card-buttons">✎</button></NavLink> : null}
     </div>
     </>
 )

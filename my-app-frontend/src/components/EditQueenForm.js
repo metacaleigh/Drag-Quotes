@@ -7,7 +7,8 @@ function EditQueenForm({ onEditFormSubmit }) {
   let { id } = useParams();
 
   const [editQueen, setEditQueen] = useState({});
-
+  const [formData, setFormData] = useState(null);
+  
   useEffect(() => {
     fetch(`http://localhost:9292/queens/${id}`)
       .then((res) => res.json())
@@ -23,23 +24,15 @@ function EditQueenForm({ onEditFormSubmit }) {
           "user_added?": true,
         });
       });
-  }, []);
+  }, [id]);
 
-  const [formData, setFormData] = useState({
-    qname: editQueen.name,
-    sun_sign: editQueen.sun_sign,
-    "winner?": editQueen["winner?"],
-    season: editQueen.season,
-    hometown: editQueen.hometown,
-    image_url: editQueen.image_url,
-    "user_added?": true,
-  });
+  
 
   function handleEditFormChange(e) {
     const { name } = e.target;
     //console.log(name)
     let value;
-    if (name == "winner?") {
+    if (name === "winner?") {
       value = e.target.checked;
     } else {
       value = e.target.value;
@@ -54,11 +47,16 @@ function EditQueenForm({ onEditFormSubmit }) {
   function handleEditFormSubmit(e) {
     e.preventDefault();
     console.log(formData);
-    onEditFormSubmit(formData);
+    onEditFormSubmit({
+        ...formData,
+        id: id
+    });
+    // console.log(formData);
     // setFormData(initialEditFormData)
     history.push("/queens");
   }
-
+  
+  if (!formData) return null;
   return (
     <div className="edit-queen-form-page">
       <div className="edit-queen-form-container">

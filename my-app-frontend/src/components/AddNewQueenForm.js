@@ -20,7 +20,7 @@ function AddNewQueenForm({ onFormSubmit }) {
     const { name } = e.target;
     //console.log(name)
     let value;
-    if (name == "winner?") {
+    if (name === "winner?") {
       value = true;
     } else {
       value = e.target.value;

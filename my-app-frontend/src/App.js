@@ -27,6 +27,7 @@ function App({ Route }) {
       //console.log(queensArr)
 
   function onFormSubmit(newQueen) {
+    console.log("onFormSubmit parameter",newQueen)
     const newQueenBody = {
       ...newQueen,
       season: Number(newQueen.season),
@@ -72,9 +73,10 @@ function App({ Route }) {
       season: Number(editedQueen.season),
       "user_added?": true
     }
+    
+    console.log("onEditFormSubmit parameter",editedQueen)
 
-    console.log(editedQueen)
-    fetch(`/queens/${editedQueen.id}`, {
+    fetch(`http://localhost:9292/queens/${editedQueen.id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json"
@@ -82,7 +84,9 @@ function App({ Route }) {
       body: JSON.stringify(editedQueenBody)
     })
       .then(res => res.json())
-      .then((data) => setQueensArr([...queensArr, data]))
+      .then((data) => setQueensArr(
+        queensArr.map((queen) => queen.id !== data.id ? queen : data)
+        ))
   }
 
 

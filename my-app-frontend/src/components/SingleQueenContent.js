@@ -7,7 +7,7 @@ function SingleQueenContent({ queenContent }) {
     //console.log(queensQuotes)
     let topQuote = queenContent.most_popular_quote
     //console.log(topQuote)
-    let user_added = queenContent["user_added?"]
+    // let user_added = queenContent["user_added?"]
     //console.log(user_added)
 
     return(
