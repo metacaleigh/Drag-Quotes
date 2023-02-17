@@ -24,7 +24,7 @@ function App({ Route }) {
         .then(quotesArr => setQuotesArr(quotesArr))
       }, [])
 
-      console.log(queensArr)
+      //console.log(queensArr)
 
   function onFormSubmit(newQueen) {
     const newQueenBody = {
@@ -32,7 +32,7 @@ function App({ Route }) {
       season: Number(newQueen.season),
       "user_added?": true
     }
-    console.log(newQueenBody)
+    //console.log(newQueenBody)
 
     fetch("http://localhost:9292/queens", {
       method: "POST",
@@ -52,7 +52,7 @@ function App({ Route }) {
       claps: Number(newQuote.claps)
     }
 
-    console.log(newQuoteBody)
+    //console.log(newQuoteBody)
 
     fetch("http://localhost:9292/quotes", {
       method: "POST",
@@ -66,13 +66,14 @@ function App({ Route }) {
   }
 
   function onEditFormSubmit(editedQueen) {
-
+    
     const editedQueenBody = {
       ...editedQueen,
       season: Number(editedQueen.season),
       "user_added?": true
     }
 
+    console.log(editedQueen)
     fetch(`/queens/${editedQueen.id}`, {
       method: "PATCH",
       headers: {
@@ -101,10 +102,10 @@ function App({ Route }) {
           <AddNewQueenForm onFormSubmit={onFormSubmit}/>
         </Route>
         <Route exact path="/add-new-quote">
-          <AddNewQuoteForm queensArr={queensArr} onQuoteFormSubmit={onQuoteFormSubmit}/>
+          <AddNewQuoteForm queensArr={queensArr} onQuoteFormSubmit={onQuoteFormSubmit} />
         </Route>
         <Route exact path="/edit-queen/:id">
-          <EditQueenForm onEditFormSubmit={onEditFormSubmit}/>
+          <EditQueenForm onEditFormSubmit={onEditFormSubmit} />
         </Route>
       </Switch>
     </div>

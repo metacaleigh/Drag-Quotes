@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
-function QueenItem({ name, image_url, id, user_added, handleDelete, setEditQueen }) {
+function QueenItem({ name, image_url, id, user_added, handleDelete }) {
 
     // function handleEditClick() {
     //     fetch(`http://localhost:9292/queens/${id}`)

@@ -4,11 +4,11 @@ function SingleQueenContent({ queenContent }) {
 
     let queenName = queenContent.name.toUpperCase();
     let queensQuotes = queenContent.quotes
-    console.log(queensQuotes)
+    //console.log(queensQuotes)
     let topQuote = queenContent.most_popular_quote
-    console.log(topQuote)
+    //console.log(topQuote)
     let user_added = queenContent["user_added?"]
-    console.log(user_added)
+    //console.log(user_added)
 
     return(
         <div className="single-queen-content-container">

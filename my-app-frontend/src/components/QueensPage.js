@@ -4,13 +4,13 @@ import QueensList from './QueensList';
 import QueensNavBar from './QueensNavBar';
 import SearchQueens from './SearchQueens';
 
-function QueensPage({ queensArr, setQueensArr, setEditQueen }) {
+function QueensPage({ queensArr, setQueensArr }) {
     const [search, setSearch] = useState("")
 
-    console.log(queensArr)
+    //console.log(queensArr)
 
     const filteredQueens = queensArr.filter((queen) => {
-        console.log(queen)
+        // //console.log(queen)
         return queen.name.toLowerCase().includes(search.toLowerCase())
     })
 
@@ -29,7 +29,7 @@ function QueensPage({ queensArr, setQueensArr, setEditQueen }) {
         <div className='queens-page-flex-column'>
             <QueensHeader />
             <SearchQueens search={search} setSearch={setSearch}/>
-            <QueensList queensArr={filteredQueens} handleDelete={handleDelete} setEditQueen={setEditQueen}/>
+            <QueensList queensArr={filteredQueens} handleDelete={handleDelete}/>
         </div>
     </div>
     );

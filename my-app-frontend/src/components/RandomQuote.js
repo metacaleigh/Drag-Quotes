@@ -39,13 +39,13 @@ function RandomQuote({ quotesArr }) {
         })
             .then(response => response.json())
             .then((data) => {
-                console.log(data)
+                //console.log(data)
                 setRandomQuote(data)
                 setClapCount(clapCount => clapCount + 1)
             })
     }
 
-    console.log(randomQuote)
+    //console.log(randomQuote)
 
     if (!randomQuote) return null
     return(
